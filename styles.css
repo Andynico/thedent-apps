@@ -1,0 +1,725 @@
+/* The Dent Apps — shared stylesheet
+   ------------------------------------------------------------------
+   One stylesheet for every page. Apps change their personality by
+   setting data-app="…" on <html>, which overrides the colour and
+   typography tokens below. See "App themes" near the end.
+   ------------------------------------------------------------------ */
+
+/* Tokens ----------------------------------------------------------- */
+
+:root {
+  color-scheme: light dark;
+
+  /* The Dent: neutral paper, near-black ink, slate accent */
+  --paper: #fbfaf8;
+  --surface: #f2f0ec;
+  --ink: #1c1c1a;
+  --ink-soft: #5b5954;
+  --rule: #e2dfd9;
+  --rule-strong: #cbc7bf;
+  --accent: #2f4b60;
+
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Helvetica Neue", Arial, sans-serif;
+  --font-serif: ui-serif, "New York", "Iowan Old Style", Charter,
+    "Bitstream Charter", Georgia, serif;
+
+  /* Headings are serif everywhere; body text can be swapped per app */
+  --font-display: var(--font-serif);
+  --font-body: var(--font-sans);
+
+  --measure: 36rem;
+  --wide: 62rem;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --radius: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #161615;
+    --surface: #1f1f1d;
+    --ink: #ecebe7;
+    --ink-soft: #a8a59e;
+    --rule: #2e2d2a;
+    --rule-strong: #45433f;
+    --accent: #9dbbd1;
+  }
+}
+
+/* Base ------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.5em;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.25rem, 1.6rem + 3vw, 3.5rem);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.35rem, 1.2rem + 0.6vw, 1.6rem);
+}
+
+h3 {
+  font-size: 1.15rem;
+}
+
+p,
+ul,
+ol,
+dl {
+  margin: 0 0 1em;
+}
+
+ul,
+ol {
+  padding-left: 1.25em;
+}
+
+li + li {
+  margin-top: 0.35em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+strong {
+  font-weight: 600;
+}
+
+/* Layout ----------------------------------------------------------- */
+
+.wrap {
+  width: 100%;
+  max-width: calc(var(--wide) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.prose {
+  max-width: var(--measure);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: -100px;
+  z-index: 10;
+  padding: 0.5rem 0.9rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+/* Site header ------------------------------------------------------ */
+
+.site-header {
+  font-family: var(--font-sans);
+  border-bottom: 1px solid var(--rule);
+}
+
+.site-header__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  padding-block: 0.9rem;
+}
+
+/* Lockup: The Dent logo (alt="The Dent") followed by the word "Apps" */
+.site-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 1.125rem;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+}
+
+.site-title__logo {
+  width: 2.75rem;
+  height: 2.75rem;
+}
+
+.site-title:hover span {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+/* The logo's lettering is black on transparent, so give it a light tile
+   in dark mode to keep it legible. */
+@media (prefers-color-scheme: dark) {
+  .site-title__logo {
+    background: #fbfaf8;
+    border-radius: 8px;
+    padding: 2px;
+  }
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.9375rem;
+}
+
+.nav-list li + li {
+  margin-top: 0;
+}
+
+.nav-list a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.nav-list a:hover,
+.nav-list a[aria-current="page"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+/* Per-app navigation (sits under the site bar on app pages) */
+
+.app-nav {
+  border-top: 1px solid var(--rule);
+}
+
+.app-nav__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1.5rem;
+  padding-block: 0.7rem;
+}
+
+.app-nav__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.app-nav__name:hover,
+.app-nav__name[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+/* Page sections ---------------------------------------------------- */
+
+.page-intro {
+  padding-block: clamp(3rem, 8vw, 6rem) clamp(2rem, 5vw, 3.5rem);
+}
+
+.lede {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.1rem + 0.8vw, 1.6rem);
+  line-height: 1.35;
+  color: var(--ink);
+  margin-bottom: 1.25rem;
+  text-wrap: balance;
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.9rem;
+}
+
+.eyebrow a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.eyebrow a:hover {
+  text-decoration: underline;
+}
+
+.muted {
+  color: var(--ink-soft);
+}
+
+.section {
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+  border-top: 1px solid var(--rule);
+}
+
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 1.5rem;
+}
+
+/* App list (home page) -------------------------------------------- */
+
+.app-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.app-list > li {
+  margin: 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.app-entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "icon text"
+    "icon meta";
+  column-gap: 1.25rem;
+  align-items: start;
+  padding-block: 1.5rem;
+}
+
+.app-entry .app-icon {
+  grid-area: icon;
+  width: 4rem;
+}
+
+.app-entry__text {
+  grid-area: text;
+}
+
+.app-entry__name {
+  font-size: 1.35rem;
+  margin: 0 0 0.15rem;
+}
+
+.app-entry__name a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+/* The whole row is clickable; the link text stays the accessible name */
+.app-entry__name a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.app-entry__name a:focus-visible {
+  outline: none;
+}
+
+.app-entry:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.app-entry:hover .app-entry__name a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+.app-entry__tagline {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.app-entry__meta {
+  grid-area: meta;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin: 0.5rem 0 0;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+}
+
+.app-entry__meta div {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.app-entry__meta dt {
+  font-weight: 600;
+}
+
+.app-entry__meta dd {
+  margin: 0;
+}
+
+@media (min-width: 40rem) {
+  .app-entry {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "icon text meta";
+    align-items: center;
+  }
+
+  .app-entry .app-icon {
+    width: 4.5rem;
+  }
+
+  .app-entry__meta {
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 0;
+    text-align: right;
+  }
+}
+
+/* App icon --------------------------------------------------------- */
+
+/* Real icons are square PNGs exported from the macOS icon, which already
+   include the rounded shape and transparent padding, so the <img> itself
+   gets no radius or border. */
+.app-icon {
+  display: block;
+  aspect-ratio: 1;
+  width: 7rem;
+  height: auto;
+}
+
+/* CSS-only placeholder: a quiet rounded tile inside the standard macOS
+   icon padding. Delete once a real icon is in place. */
+.app-icon--placeholder {
+  position: relative;
+}
+
+.app-icon--placeholder::before {
+  content: "";
+  position: absolute;
+  inset: 9.8%;
+  border-radius: 22.5%;
+  background: var(--surface);
+  box-shadow:
+    inset 0 0 0 1px var(--rule-strong),
+    0 1px 2px rgb(0 0 0 / 0.06);
+}
+
+/* Screenshot ------------------------------------------------------- */
+
+.screenshot {
+  margin: 0;
+}
+
+.screenshot img,
+.screenshot__placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius);
+  border: 1px solid var(--rule-strong);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 12px 32px -12px rgb(0 0 0 / 0.18);
+}
+
+.screenshot figcaption {
+  margin-top: 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+}
+
+/* CSS-only placeholder: a suggestion of a Mac window with a sidebar and a
+   column of text. Delete once a real screenshot is in place. */
+.screenshot__placeholder {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 28% 1fr;
+  grid-template-rows: 2.25rem 1fr;
+  background: var(--paper);
+}
+
+.screenshot__placeholder::before {
+  /* title bar with three window controls */
+  content: "";
+  grid-column: 1 / -1;
+  border-bottom: 1px solid var(--rule);
+  background:
+    radial-gradient(circle, var(--rule-strong) 5px, transparent 5.5px) 0.6rem 50% / 1.25rem 100% no-repeat,
+    radial-gradient(circle, var(--rule-strong) 5px, transparent 5.5px) 1.85rem 50% / 1.25rem 100% no-repeat,
+    radial-gradient(circle, var(--rule-strong) 5px, transparent 5.5px) 3.1rem 50% / 1.25rem 100% no-repeat,
+    var(--surface);
+}
+
+.screenshot__sidebar {
+  grid-area: 2 / 1;
+  background: var(--surface);
+  border-right: 1px solid var(--rule);
+}
+
+.screenshot__page {
+  /* faint lines of text */
+  grid-area: 2 / 2;
+  margin: 12% 16% 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--rule) 0 0.4rem,
+    transparent 0.4rem 1.2rem
+  );
+  mask-image: linear-gradient(to bottom, #000 40%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent);
+}
+
+.screenshot__label {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  align-self: end;
+  justify-self: center;
+  margin-bottom: 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+/* Product page ----------------------------------------------------- */
+
+.product-hero {
+  padding-block: clamp(3rem, 8vw, 5.5rem) clamp(2rem, 5vw, 3rem);
+}
+
+.product-hero .app-icon {
+  width: clamp(5.5rem, 12vw, 8rem);
+  margin: 0 0 1.25rem -0.5rem; /* optically align the icon's padding */
+}
+
+.product-hero h1 {
+  margin-bottom: 0.3em;
+}
+
+.status {
+  display: inline-block;
+  margin: 0.5rem 0 0;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--ink);
+}
+
+.product-shot {
+  padding-bottom: clamp(3rem, 7vw, 5rem);
+}
+
+.intro-text {
+  font-size: 1.1875rem;
+  max-width: var(--measure);
+}
+
+.features {
+  display: grid;
+  gap: 0 clamp(2rem, 5vw, 4rem);
+  margin-top: 2.5rem;
+}
+
+.feature {
+  padding-block: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.feature h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.4em;
+}
+
+.feature p:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 48rem) {
+  .features {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Long-form pages (privacy, support) ------------------------------ */
+
+.doc {
+  padding-bottom: clamp(3rem, 7vw, 5rem);
+}
+
+.doc .page-intro {
+  padding-bottom: 1.5rem;
+}
+
+.doc h2 {
+  margin-top: 2.5rem;
+}
+
+.doc .page-intro + h2 {
+  margin-top: 0.5rem;
+}
+
+.doc h3 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.35em;
+}
+
+.summary {
+  margin: 0 0 2.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--surface);
+  border-radius: var(--radius);
+}
+
+.summary h2 {
+  margin-top: 0;
+  font-size: 1.125rem;
+}
+
+.summary ul {
+  margin-bottom: 0;
+}
+
+.contact-line {
+  font-size: 1.1875rem;
+}
+
+.faq h3 {
+  font-size: 1.125rem;
+}
+
+/* Site footer ------------------------------------------------------ */
+
+.site-footer {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--rule);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem 2rem;
+  padding-block: 2rem 2.5rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer .nav-list {
+  font-size: inherit;
+}
+
+/* App themes ------------------------------------------------------- */
+
+/* Estia: warm cream paper, earthy brown accent, serif text */
+[data-app="estia"] {
+  --paper: #f8f3ea;
+  --surface: #efe7d9;
+  --ink: #2a211a;
+  --ink-soft: #6b5c4d;
+  --rule: #e4d9c7;
+  --rule-strong: #cdbda5;
+  --accent: #7a4a2a;
+  --font-body: var(--font-serif);
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-app="estia"] {
+    --paper: #1c1814;
+    --surface: #26201b;
+    --ink: #eee5d8;
+    --ink-soft: #b3a592;
+    --rule: #342c24;
+    --rule-strong: #4d4236;
+    --accent: #d9a877;
+  }
+}
+
+/* Motion ----------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

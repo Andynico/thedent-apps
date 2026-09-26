@@ -1,0 +1,8 @@
+# Cloudflare Pages response headers. Not used by local preview servers.
+# The CSP allows only same-origin stylesheets and images: no scripts,
+# fonts, frames or third-party requests of any kind.
+/*
+  Content-Security-Policy: default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
