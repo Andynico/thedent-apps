@@ -51,7 +51,7 @@
             <li>Your writing is stored as files on your Mac, in a location you choose.</li>
             <li>Estia has no developer-operated analytics, no advertising and no tracking.</li>
             <li>I don’t receive your writing through Estia’s normal operation.</li>
-            <li>Estia does connect to other services when you ask it to: the feeds and websites you add, and a publishing service if you choose to publish.</li>
+            <li>Estia does connect to other services when you ask it to: the feeds and websites you add, and your configured Micropub publishing service if you choose to publish.</li>
           </ul>
         </section>
 
@@ -77,16 +77,16 @@
         <p>Estia makes network requests directly to the RSS and Atom feeds and other sources you configure. When you open a source, Estia may fetch the article or page content directly from the website it came from. As with visiting any website, those sites receive the request from your Mac, including information such as your IP address.</p>
 
         <h3>Writing assistance</h3>
-        <p>Estia’s Get Started and Suggest Outline features use Apple’s on-device Foundation Models, on Macs that support them. They only run when you explicitly choose to use them. Estia doesn’t send your writing to any AI server operated by me or for Estia. Apple’s own features are covered by Apple’s privacy policy.</p>
+        <p>Estia’s optional writing-assistance feature (Get Started and Suggest Outline) uses Apple’s on-device Foundation Models, part of Apple Intelligence, on supported Macs. It only runs when you explicitly choose to use it. Processing for this feature is performed on-device, and Estia doesn’t send your writing to an AI service operated by me.</p>
 
         <h3>Publishing</h3>
-        <p>Estia can optionally publish to a service you’ve set up, such as Pika or another service that supports Micropub. Estia only communicates with that service when you explicitly choose to publish, and it sends what’s needed to publish your post to the service you configured.</p>
+        <p>Estia can optionally publish to your configured Micropub publishing service (such as Pika). Estia only communicates with that service when you explicitly choose to publish, and it sends the post you’re publishing, along with your credentials for that service, so it can be published. I don’t operate that service.</p>
 
-        <h2>Credentials</h2>
-        <p>Where an optional service needs you to sign in or provide a token, Estia stores those credentials using macOS system facilities, such as the Keychain, where applicable.</p>
+        <h2>Publishing credentials</h2>
+        <p>Credentials for your configured publishing service are stored in the macOS Keychain on your Mac, and are used to authenticate with that publishing service.</p>
 
         <h2>Third-party services</h2>
-        <p>Feed publishers, websites, publishing services and Apple each have their own privacy practices and policies. I don’t operate those services and can’t speak for how they handle information, so please review their policies if you have questions about them.</p>
+        <p>Feed publishers, websites, your publishing service and Apple each have their own privacy practices and policies. I don’t operate those services and can’t speak for how they handle information, so please review their policies if you have questions about them.</p>
 
         <h2>Changes to this policy</h2>
         <p>If Estia’s behaviour changes in a way that affects this policy, I’ll update this page and the date at the top.</p>
