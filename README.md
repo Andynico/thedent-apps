@@ -16,9 +16,7 @@ Plain HTML and one stylesheet. No framework, build step, JavaScript, cookies, an
 ├── apple-touch-icon.png    180 px, on white (iOS fills transparency with black)
 ├── assets/images/
 │   ├── the-dent-apps-logo-light.png  header logo (dark lettering), 320 px, shown at 64–80 px
-│   ├── the-dent-apps-logo-dark.png   header logo for dark mode (light lettering)
-│   ├── the-dent-logo.png             876 px The Dent master (transparent)
-│   └── the-dent-logo-192.png         earlier header logo, no longer referenced
+│   └── the-dent-apps-logo-dark.png   header logo for dark mode (light lettering)
 └── estia/
     ├── index.html          /estia/          product page
     ├── support/index.html  /estia/support/  support and FAQ
