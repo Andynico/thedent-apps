@@ -158,6 +158,20 @@ strong {
   max-width: var(--measure);
 }
 
+/* Hidden visually but still read by screen readers, e.g. the home page
+   title, which the logo already shows. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 .skip-link {
   position: absolute;
   left: var(--gutter);
