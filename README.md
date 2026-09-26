@@ -15,8 +15,10 @@ Plain HTML and one stylesheet. No framework, build step, JavaScript, cookies, an
 ├── favicon.png             64 px The Dent logo
 ├── apple-touch-icon.png    180 px, on white (iOS fills transparency with black)
 ├── assets/images/
-│   ├── the-dent-logo.png       876 px master (transparent)
-│   └── the-dent-logo-192.png   header logo, shown at 44 px
+│   ├── the-dent-apps-logo-light.png  header logo (dark lettering), 320 px, shown at 64–80 px
+│   ├── the-dent-apps-logo-dark.png   header logo for dark mode (light lettering)
+│   ├── the-dent-logo.png             876 px The Dent master (transparent)
+│   └── the-dent-logo-192.png         earlier header logo, no longer referenced
 └── estia/
     ├── index.html          /estia/          product page
     ├── support/index.html  /estia/support/  support and FAQ
@@ -36,18 +38,19 @@ python3 -m http.server 8000
 
 Then open http://localhost:8000. (`_headers` only applies on Cloudflare.)
 
-The header shows The Dent logo (`alt="The Dent"`) followed by the word "Apps", so it reads as "The Dent Apps". The logo is black on transparent, so in dark mode `styles.css` puts it on a small light tile.
+The header shows The Dent Apps logo (`alt="The Dent Apps"`), which already contains the name. Each page uses a `<picture>` with a `(prefers-color-scheme: dark)` source, so the browser picks the light or dark logo itself, with no JavaScript. The Estia icon uses the same pattern.
 
 ## Estia assets
 
-The icon and screenshot are currently CSS placeholders. To replace them, add these files to `estia/assets/`:
+In `estia/assets/`:
 
-| File | Recommended size | Notes |
+| File | Size | Notes |
 | --- | --- | --- |
-| `estia-icon.png` | 512 × 512 px | Exported from the macOS app icon, with its rounded shape, shadow and transparent padding intact. Shown at up to 128 CSS px (so 512 covers Retina with room to spare). |
-| `estia-screenshot.png` | 2880 × 1800 px (16:10) | A Retina capture of the main window. Aim for under ~600 KB; a high-quality `.jpg` or `.webp` is fine too if you update the filename. |
+| `estia-icon-light.png` | 512 × 512 px | App icon with transparent padding, shown at up to 128 CSS px. |
+| `estia-icon-dark.png` | 512 × 512 px | Dark-mode variant, chosen by `<picture>`. |
+| `estia-screenshot.webp` | 2000 × 1150 px | Real capture of the main window, including its own window chrome, so the page adds only a thin frame. |
 
-Then, in `estia/index.html` (and for the icon, the Estia row in `/index.html`), delete the placeholder `<div>` and uncomment the `<img>` beside it. For the screenshot, write real `alt` text describing what it shows. The icon's `alt` stays empty because the app name is right next to it.
+When replacing an image, keep the `width` and `height` attributes in the HTML matching its pixel size so the aspect ratio is reserved. The icon's `alt` stays empty because the app name is right next to it; the screenshot's `alt` should describe what it shows.
 
 ## Adding another app
 

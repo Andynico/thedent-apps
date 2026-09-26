@@ -15,7 +15,7 @@
 
   <header class="site-header">
     <div class="wrap site-header__bar">
-      <a class="site-title" href="/"><img class="site-title__logo" src="/assets/images/the-dent-logo-192.png" width="192" height="192" alt="The Dent"><span>Apps</span></a>
+      <a class="site-title" href="/"><picture><source srcset="/assets/images/the-dent-apps-logo-dark.png" media="(prefers-color-scheme: dark)"><img class="site-title__logo" src="/assets/images/the-dent-apps-logo-light.png" width="320" height="320" alt="The Dent Apps"></picture></a>
       <nav aria-label="Site">
         <ul class="nav-list">
           <li><a href="https://thedent.net">The Dent<span aria-hidden="true"> ↗</span></a></li>
@@ -36,9 +36,7 @@
   <main id="main">
     <div class="wrap">
       <section class="product-hero" aria-labelledby="page-title">
-        <!-- Replace this placeholder with the real icon:
-             <img class="app-icon" src="/estia/assets/estia-icon.png" width="512" height="512" alt=""> -->
-        <div class="app-icon app-icon--placeholder" aria-hidden="true"></div>
+        <picture><source srcset="/estia/assets/estia-icon-dark.png" media="(prefers-color-scheme: dark)"><img class="app-icon" src="/estia/assets/estia-icon-light.png" width="512" height="512" alt=""></picture>
         <h1 id="page-title">Estia</h1>
         <p class="lede">A quiet place to find inspiration and write.</p>
         <p class="status">Coming soon to the Mac App Store</p>
@@ -46,37 +44,31 @@
 
       <div class="product-shot">
         <figure class="screenshot">
-          <!-- Replace this placeholder with the real screenshot:
-               <img src="/estia/assets/estia-screenshot.png" width="2880" height="1800"
-                    alt="Describe what the screenshot shows, e.g. Estia’s main window with a draft open."> -->
-          <div class="screenshot__placeholder" role="img" aria-label="Placeholder for a screenshot of Estia">
-            <div class="screenshot__sidebar"></div>
-            <div class="screenshot__page"></div>
-            <span class="screenshot__label" aria-hidden="true">Screenshot coming soon</span>
-          </div>
+          <img src="/estia/assets/estia-screenshot.webp" width="2000" height="1150"
+               alt="Estia’s main window in dark mode, with a source article’s details and a Suggest Outline button above a new draft, and Send to Pika, Write and Preview in the toolbar.">
         </figure>
       </div>
 
       <section class="section" aria-labelledby="about-heading">
         <h2 class="section-label" id="about-heading">About Estia</h2>
-        <p class="intro-text">Estia is a native Mac app for writers who start from what they read. It gathers the sources you follow, helps you notice something worth writing about, and then gives you a calm, focused place to write it.</p>
+        <p class="intro-text">When it comes to writing, we all need a little inspiration, and a quiet space to let that inspiration become something more. This is why I created Estia. A quiet space for writing, with thoughts and insights from your favourite writers close at hand when you need them.</p>
 
         <div class="features">
           <div class="feature">
             <h3>Start from what you read</h3>
-            <p>Estia brings your RSS and Atom sources together as a pool of potential inspiration rather than an inbox to clear. It is deliberately a writing app, not a full RSS reader: the sources are there to help you find something worth writing about.</p>
+            <p>Add your favourite writers, blogs and websites to Estia and their latest posts are always close at hand. There’s no inbox to clear or endless list of articles to work through. They’re simply there when you’re looking for a little inspiration.</p>
           </div>
           <div class="feature">
             <h3>A focused place to write</h3>
-            <p>A native macOS writing environment built around Markdown. Write a piece that grows out of a source, or a link post that points to something you’ve found. When it’s ready, you can publish to compatible services using Micropub.</p>
+            <p>When you find that spark of inspiration, Estia gives you a quiet place to get your thoughts onto the page. Write without distraction, create a quick link post when something is worth sharing, or just start writing from scratch, and when you’re ready, publish directly to your blog or save the files locally to upload later.</p>
           </div>
           <div class="feature">
             <h3>Plain files, on your Mac</h3>
-            <p>Your writing is saved locally as ordinary Markdown files, in a folder you choose. There’s no Estia account, and your writing isn’t uploaded to Estia servers.</p>
+            <p>Your writing belongs to you. Estia saves everything locally as ordinary Markdown files, in a folder you choose. There’s no Estia account and nothing is uploaded to Estia servers. Your files are always there for you to open, edit, move or back up however you like.</p>
           </div>
           <div class="feature">
             <h3>A little help getting started</h3>
-            <p>On supported Macs, Estia uses Apple Intelligence to suggest a structure for your writing when you need it. It only runs when you ask, and it gives you a broad outline to write within, not a finished article. The writing is still yours.</p>
+            <p>Sometimes getting started is the hardest part. When you need a little help, Estia can use Apple Intelligence to suggest a simple structure for your writing based on what inspired you. It only happens when you ask, and it won’t write the article for you. The words, thoughts and ideas are still yours.</p>
           </div>
         </div>
       </section>

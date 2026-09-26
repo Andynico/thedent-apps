@@ -192,36 +192,16 @@ strong {
   padding-block: 0.9rem;
 }
 
-/* Lockup: The Dent logo (alt="The Dent") followed by the word "Apps" */
+/* The Dent Apps logo already includes its name. A <picture> swaps in the
+   light-lettered version when the system is in dark mode. */
 .site-title {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  color: var(--ink);
-  font-weight: 600;
-  font-size: 1.125rem;
-  letter-spacing: -0.005em;
-  text-decoration: none;
+  display: block;
+  border-radius: 6px;
 }
 
 .site-title__logo {
-  width: 2.75rem;
-  height: 2.75rem;
-}
-
-.site-title:hover span {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-}
-
-/* The logo's lettering is black on transparent, so give it a light tile
-   in dark mode to keep it legible. */
-@media (prefers-color-scheme: dark) {
-  .site-title__logo {
-    background: #fbfaf8;
-    border-radius: 8px;
-    padding: 2px;
-  }
+  width: clamp(4rem, 3.25rem + 3vw, 5rem);
+  height: auto;
 }
 
 .nav-list {
@@ -357,8 +337,11 @@ strong {
   padding-block: 1.5rem;
 }
 
-.app-entry .app-icon {
+.app-entry__icon {
   grid-area: icon;
+}
+
+.app-entry .app-icon {
   width: 4rem;
 }
 
@@ -400,6 +383,11 @@ strong {
 
 .app-entry__tagline {
   margin: 0;
+  color: var(--ink);
+}
+
+.app-entry__description {
+  margin: 0.15rem 0 0;
   color: var(--ink-soft);
 }
 
@@ -458,33 +446,17 @@ strong {
   height: auto;
 }
 
-/* CSS-only placeholder: a quiet rounded tile inside the standard macOS
-   icon padding. Delete once a real icon is in place. */
-.app-icon--placeholder {
-  position: relative;
-}
-
-.app-icon--placeholder::before {
-  content: "";
-  position: absolute;
-  inset: 9.8%;
-  border-radius: 22.5%;
-  background: var(--surface);
-  box-shadow:
-    inset 0 0 0 1px var(--rule-strong),
-    0 1px 2px rgb(0 0 0 / 0.06);
-}
-
 /* Screenshot ------------------------------------------------------- */
 
 .screenshot {
   margin: 0;
 }
 
-.screenshot img,
-.screenshot__placeholder {
+/* The screenshot already shows the real window, so it gets only a quiet
+   frame; its width and height attributes keep the aspect ratio. */
+.screenshot img {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: auto;
   border-radius: var(--radius);
   border: 1px solid var(--rule-strong);
   box-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 12px 32px -12px rgb(0 0 0 / 0.18);
@@ -494,60 +466,6 @@ strong {
   margin-top: 0.9rem;
   font-family: var(--font-sans);
   font-size: 0.875rem;
-  color: var(--ink-soft);
-}
-
-/* CSS-only placeholder: a suggestion of a Mac window with a sidebar and a
-   column of text. Delete once a real screenshot is in place. */
-.screenshot__placeholder {
-  position: relative;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 28% 1fr;
-  grid-template-rows: 2.25rem 1fr;
-  background: var(--paper);
-}
-
-.screenshot__placeholder::before {
-  /* title bar with three window controls */
-  content: "";
-  grid-column: 1 / -1;
-  border-bottom: 1px solid var(--rule);
-  background:
-    radial-gradient(circle, var(--rule-strong) 5px, transparent 5.5px) 0.6rem 50% / 1.25rem 100% no-repeat,
-    radial-gradient(circle, var(--rule-strong) 5px, transparent 5.5px) 1.85rem 50% / 1.25rem 100% no-repeat,
-    radial-gradient(circle, var(--rule-strong) 5px, transparent 5.5px) 3.1rem 50% / 1.25rem 100% no-repeat,
-    var(--surface);
-}
-
-.screenshot__sidebar {
-  grid-area: 2 / 1;
-  background: var(--surface);
-  border-right: 1px solid var(--rule);
-}
-
-.screenshot__page {
-  /* faint lines of text */
-  grid-area: 2 / 2;
-  margin: 12% 16% 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    var(--rule) 0 0.4rem,
-    transparent 0.4rem 1.2rem
-  );
-  mask-image: linear-gradient(to bottom, #000 40%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent);
-}
-
-.screenshot__label {
-  grid-column: 1 / -1;
-  grid-row: 2;
-  align-self: end;
-  justify-self: center;
-  margin-bottom: 1.25rem;
-  font-family: var(--font-sans);
-  font-size: 0.8125rem;
-  letter-spacing: 0.04em;
   color: var(--ink-soft);
 }
 
