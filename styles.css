@@ -1,8 +1,8 @@
 /* The Dent Apps — shared stylesheet
    ------------------------------------------------------------------
-   One stylesheet for every page. Apps change their personality by
-   setting data-app="…" on <html>, which overrides the colour and
-   typography tokens below. See "App themes" near the end.
+   One stylesheet for every page. Every page shares the colour tokens
+   below; an app can set data-app="…" on <html> to override typography
+   tokens. See "App themes" near the end.
    ------------------------------------------------------------------ */
 
 /* Tokens ----------------------------------------------------------- */
@@ -483,6 +483,18 @@ strong {
   color: var(--ink-soft);
 }
 
+/* iPhone screenshots, shown side by side. The radius follows the
+   iPhone's screen corners: 13% of the width, 6% of the height. */
+.screenshot-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 17.5rem));
+  gap: clamp(1rem, 4vw, 2.5rem);
+}
+
+.screenshot--phone img {
+  border-radius: 13% / 6%;
+}
+
 /* Product page ----------------------------------------------------- */
 
 .product-hero {
@@ -619,28 +631,32 @@ strong {
 
 /* App themes ------------------------------------------------------- */
 
-/* Estia: warm cream paper, earthy brown accent, serif text */
+/* Every page uses The Dent's colours above, in light and dark, so the
+   apps read as one site. An app may still override typography here. */
+
+/* Estia: serif text */
 [data-app="estia"] {
-  --paper: #f8f3ea;
-  --surface: #efe7d9;
-  --ink: #2a211a;
-  --ink-soft: #6b5c4d;
-  --rule: #e4d9c7;
-  --rule-strong: #cdbda5;
-  --accent: #7a4a2a;
   --font-body: var(--font-serif);
 }
 
-@media (prefers-color-scheme: dark) {
-  [data-app="estia"] {
-    --paper: #1c1814;
-    --surface: #26201b;
-    --ink: #eee5d8;
-    --ink-soft: #b3a592;
-    --rule: #342c24;
-    --rule-strong: #4d4236;
-    --accent: #d9a877;
-  }
+/* iPhone icons are full-bleed squares that iOS masks itself, so unlike the
+   macOS icons above they get their rounded shape here, and are scaled to
+   the same visual size as a macOS icon's artwork within its padding. */
+.app-icon--ios {
+  border-radius: 22.37%;
+  transform: scale(0.805);
+  box-shadow: 0 0 0 1px var(--rule-strong), 0 8px 20px -10px rgb(0 0 0 / 0.35);
+}
+
+/* On the home page, match the Estia icon's artwork, which fills 85.2% of
+   its canvas (436 of 512 px), so both apps read at the same size. */
+.app-entry .app-icon--ios {
+  transform: scale(0.852);
+}
+
+/* The same correction for the product page hero, beside Estia's. */
+.product-hero .app-icon--ios {
+  transform: scale(0.852);
 }
 
 /* Motion ----------------------------------------------------------- */
