@@ -63,6 +63,8 @@ In `quest-journal/assets/`:
 | --- | --- | --- |
 | `quest-journal-icon-light.png` | 512 × 512 px | The approved iOS app icon, resized from the app's 1024 px `AppIcon-Light.png`. |
 | `quest-journal-icon-dark.png` | 512 × 512 px | Dark-mode variant, from `AppIcon-Dark.png`, chosen by `<picture>`. |
+| `quest-journal-hero-light.webp` | 1536 × 1024 px | Product page artwork for light mode. |
+| `quest-journal-hero-dark.webp` | 1536 × 1024 px | Dark-mode variant, chosen by `<picture>`. |
 
 iOS icons are full-bleed squares that the system masks, so these get their rounded corners from the `.app-icon--ios` class in `styles.css` rather than from the image.
 

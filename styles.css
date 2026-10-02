@@ -483,18 +483,6 @@ strong {
   color: var(--ink-soft);
 }
 
-/* iPhone screenshots, shown side by side. The radius follows the
-   iPhone's screen corners: 13% of the width, 6% of the height. */
-.screenshot-pair {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 17.5rem));
-  gap: clamp(1rem, 4vw, 2.5rem);
-}
-
-.screenshot--phone img {
-  border-radius: 13% / 6%;
-}
-
 /* Product page ----------------------------------------------------- */
 
 .product-hero {
