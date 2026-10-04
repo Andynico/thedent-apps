@@ -52,6 +52,7 @@ In `estia/assets/`:
 | `estia-icon-light.png` | 512 × 512 px | App icon with transparent padding, shown at up to 128 CSS px. |
 | `estia-icon-dark.png` | 512 × 512 px | Dark-mode variant, chosen by `<picture>`. |
 | `estia-screenshot.webp` | 2000 × 1150 px | Real capture of the main window, including its own window chrome, so the page adds only a thin frame. |
+| `download-on-the-mac-app-store-badge.svg` | 156 × 40 px (SVG) | Apple's official black “Download on the Mac App Store” badge (US-UK English), unmodified, from [Apple's marketing toolbox](https://toolbox.marketingtools.apple.com/app-store/). Links to the live App Store listing from the home page and the Estia hero. Don't edit the artwork; keep at least 40 px high with a quarter of its height as clear space. |
 
 When replacing an image, keep the `width` and `height` attributes in the HTML matching its pixel size so the aspect ratio is reserved. The icon's `alt` stays empty because the app name is right next to it; the screenshot's `alt` should describe what it shows.
 

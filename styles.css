@@ -384,7 +384,7 @@ strong {
   outline: none;
 }
 
-.app-entry:focus-within {
+.app-entry:has(.app-entry__name a:focus-visible) {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
   border-radius: 4px;
@@ -403,6 +403,14 @@ strong {
 .app-entry__description {
   margin: 0.15rem 0 0;
   color: var(--ink-soft);
+}
+
+/* Sits above the row's link overlay so the badge stays its own link */
+.app-entry__badge {
+  position: relative;
+  z-index: 1;
+  width: fit-content;
+  margin: 0.75rem 0 0;
 }
 
 .app-entry__meta {
@@ -507,6 +515,30 @@ strong {
   font-family: var(--font-sans);
   font-size: 0.875rem;
   color: var(--ink);
+}
+
+/* App Store badge ------------------------------------------------- */
+
+/* Apple's unmodified badge artwork. Apple asks for at least 40 px of
+   height on screen and clear space of a quarter of its height, which the
+   margins around .app-entry__badge and .product-hero__badge provide. */
+.store-badge {
+  display: block;
+  width: fit-content;
+  border-radius: 8px;
+}
+
+.store-badge img {
+  width: auto;
+  height: 40px;
+}
+
+.product-hero__badge {
+  margin: 1.25rem 0 0;
+}
+
+.product-hero__badge .store-badge img {
+  height: 48px;
 }
 
 .product-shot {
