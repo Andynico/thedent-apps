@@ -49,8 +49,8 @@ In `estia/assets/`:
 
 | File | Size | Notes |
 | --- | --- | --- |
-| `estia-icon-light.png` | 512 × 512 px | App icon with transparent padding, shown at up to 128 CSS px. |
-| `estia-icon-dark.png` | 512 × 512 px | Dark-mode variant, chosen by `<picture>`. |
+| `estia-icon-light.png` | 512 × 512 px | The approved Estia 1.3 Default icon (Light), a full-bleed square from the app's 1024 px master with its painted border trimmed (10 px each side) and resized once to 512 px. Shown at up to 128 CSS px, rounded by `.app-icon--ios`. |
+| `estia-icon-dark.png` | 512 × 512 px | Dark-mode variant from the Dark master, chosen by `<picture>`. |
 | `estia-screenshot.webp` | 2000 × 1150 px | Real capture of the main window, including its own window chrome, so the page adds only a thin frame. |
 | `download-on-the-mac-app-store-badge.svg` | 156 × 40 px (SVG) | Apple's official black “Download on the Mac App Store” badge (US-UK English), unmodified, from [Apple's marketing toolbox](https://toolbox.marketingtools.apple.com/app-store/). Links to the live App Store listing from the home page and the Estia hero. Don't edit the artwork; keep at least 40 px high with a quarter of its height as clear space. |
 
@@ -67,7 +67,7 @@ In `quest-journal/assets/`:
 | `quest-journal-hero-light.webp` | 1536 × 1024 px | Product page artwork for light mode. |
 | `quest-journal-hero-dark.webp` | 1536 × 1024 px | Dark-mode variant, chosen by `<picture>`. |
 
-iOS icons are full-bleed squares that the system masks, so these get their rounded corners from the `.app-icon--ios` class in `styles.css` rather than from the image.
+Full-bleed icons (these, and Estia's above) are squares that the system masks, so they get their rounded corners from the `.app-icon--ios` class in `styles.css` rather than from the image.
 
 ## Adding another app
 

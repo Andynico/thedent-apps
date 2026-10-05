@@ -458,9 +458,8 @@ strong {
 
 /* App icon --------------------------------------------------------- */
 
-/* Real icons are square PNGs exported from the macOS icon, which already
-   include the rounded shape and transparent padding, so the <img> itself
-   gets no radius or border. */
+/* Icons are square PNGs. This base class sets only the size; full-bleed
+   artwork gets its rounded shape from .app-icon--ios below. */
 .app-icon {
   display: block;
   aspect-ratio: 1;
@@ -659,22 +658,23 @@ strong {
   --font-body: var(--font-serif);
 }
 
-/* iPhone icons are full-bleed squares that iOS masks itself, so unlike the
-   macOS icons above they get their rounded shape here, and are scaled to
-   the same visual size as a macOS icon's artwork within its padding. */
+/* Full-bleed icons (Quest Journal's iPhone icon and Estia's Mac icon) are
+   squares that the system masks itself, so they get their rounded shape
+   here, and are scaled to the visual size of an icon's artwork within its
+   padding. */
 .app-icon--ios {
   border-radius: 22.37%;
   transform: scale(0.805);
   box-shadow: 0 0 0 1px var(--rule-strong), 0 8px 20px -10px rgb(0 0 0 / 0.35);
 }
 
-/* On the home page, match the Estia icon's artwork, which fills 85.2% of
-   its canvas (436 of 512 px), so both apps read at the same size. */
+/* On the home page, scale to the 85.2% of the canvas (436 of 512 px) that a
+   padded macOS icon's artwork fills, so every app icon reads at one size. */
 .app-entry .app-icon--ios {
   transform: scale(0.852);
 }
 
-/* The same correction for the product page hero, beside Estia's. */
+/* The same correction for the product page hero. */
 .product-hero .app-icon--ios {
   transform: scale(0.852);
 }
